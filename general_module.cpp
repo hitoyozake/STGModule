@@ -2,22 +2,23 @@
 
 namespace general_module
 {
-	//å„ì˙
-	//typedef position std::pair< double, double>;
-	//Ç≈çÏÇ¡ÇƒÇ‡ó«Ç¢Ç©Ç‡ÇµÇÍÇ»Ç¢
-
-	template< class T, int X_MIN, int X_MAX, int Y_MIN, int Y_MAX >
-	bool is_in_space( const T x, const T y )
+	struct position
 	{
-		return ( X_MIN < static_cast< int >( x ) ) && ( X_MAX > static_cast< int >( x ) ) && \
-			( Y_MIN < static_cast< int >( y ) ) && ( Y_MAX > static_cast< int >( y ) );
+		double x_, y_;
+	};
+
+	template< class T, class position, int X_MIN, int X_MAX, int Y_MIN, int Y_MAX >
+	bool is_in_space( const position & pos )
+	{
+		return ( X_MIN < static_cast< int >( pos.x_ ) ) && ( X_MAX > static_cast< int >( pos.x_ ) ) && \
+			( Y_MIN < static_cast< int >( pos.y_ ) ) && ( Y_MAX > static_cast< int >( pos.y_ ) );
 	}
 
 	template< int X_MIN, int X_MAX, int Y_MIN, int Y_MAX >
-	bool is_in_space( const int x, const int y )
+	bool is_in_space( const positoin & pos )
 	{
-		return ( X_MIN <  x ) && ( X_MAX > x ) && \
-			( Y_MIN < y ) && ( Y_MAX > y );
+		return ( X_MIN <  static_cast< int >( pos.x_ ) ) && ( X_MAX > static_cast< int >( pos.x_ ) ) && \
+			( Y_MIN < static_cast< int >( pos.y_ ) ) && ( Y_MAX > static_cast< int >( pos.y_ ) );
 	}
 
 	template< class T >
